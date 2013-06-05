@@ -1,0 +1,126 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+ "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<title>Daniel Rodriguez</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+	<meta http-equiv="X-UA-Compatible" content="IE=8">
+	<link href="../style.css" rel="stylesheet" type="text/css" />
+	<script type="text/javascript">
+		var _gaq = _gaq || [];
+		_gaq.push(['_setAccount', 'UA-17305589-1']);
+		_gaq.push(['_trackPageview']);
+
+		(function() {
+			var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+			ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+			var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+		})();
+	</script>
+</head>
+<body>
+	<div id="topPan">
+		<div id="logo"> 
+			<h1>
+				<a href="index.html">Daniel Rodriguez</a></h1> 
+			<p>A game developer</p> 
+		</div> 
+		<div id="tabs">
+			<ul>
+				<li><a href="index.html">
+					<span>Home</span>
+				</a></li>
+				<li><a href="resume.html">
+						<span>Resume</span>
+				</a></li>
+				<li><a href="portfolio.html">
+						<span>Portfolio</span>
+				</a></li>
+				<li><a href="blog.html">
+						<span>Blog</span>
+				</a></li>
+				<li><a href="contact.html">
+						<span>Contact</span>
+				</a></li>
+			</ul>
+		</div>
+	</div>
+	<div id="bodytopmainPan">
+		<div id="bodytopPan">
+			<p class="project-breadcrumbs"><a href="portfolio.html">Portfolio</a> ></p>
+			<h2>Patient Experience</h2>
+				<img id="project-img-id" class="project-img" src="../images/patexp.jpg"/>
+				<p class="double-spacing">Patient Experience was a project from the Entertainment Technology Center at Carnegie Mellon 
+				University.  The project's team sought to investigate how can games can help in creating an
+				environment which could helps patients through the rehabilitation process of a Total Knee/Total Hip 
+				replacement surgery.  Due to my previous experience in ActionScript 3, I acted as lead programmer
+				and designed the supporting architecture for the games that were developed during the semester.</p>
+				<!-- -->
+				<h3 class="project-item">Features</h3>
+				<p>The project primarily tacked the following constrains, set by our client, UPMC: 
+				<ul class="project-item-list">
+					<li>Give immediate, tangible feedback to the patients</li>
+					<li>Provide encouragement to the patients as well as their progress</li>
+					<li>The tool should be easier to use and relate to the target demographic.</li>
+				</ul>
+				<p>Here is a 30 second video showcasing our work:</p>
+				<object style="margin-left:100px" width="471" height="312"><param name="allowfullscreen" value="true" /><param name="allowscriptaccess" value="always" /><param name="movie" value="http://vimeo.com/moogaloop.swf?clip_id=7331612&amp;server=vimeo.com&amp;show_title=0&amp;show_byline=0&amp;show_portrait=0&amp;color=00ADEF&amp;fullscreen=1" /><embed src="http://vimeo.com/moogaloop.swf?clip_id=7331612&amp;server=vimeo.com&amp;show_title=0&amp;show_byline=0&amp;show_portrait=0&amp;color=00ADEF&amp;fullscreen=1" type="application/x-shockwave-flash" allowfullscreen="true" allowscriptaccess="always" width="471" height="312"></embed></object>
+				<!-- -->
+				<h3 class="project-item">Challenges</h3>
+				<p>The project was challenging due to the following issues</p>
+				<ul class="project-item-list">
+					<li>The main demographic for Total Knee/Total Hip surgery are usually 50-plus years old, due to natural bone/cartilage wear out.  
+						This situated our demographic target outside of standard gaming groups demographies</li>
+					<li>The client had tried using several game-related products, but in the end they were not used anymore due to abandonment, 
+						installation problems and relevancy towards the target demography.</li>
+					<li>The patient's focus should be on his daily recovery exercise routine.  The games should not distract the patient from his routine.</li>
+					<li>Integrate different inputs, like the Wii Balance Board and an inertial measurement unit to the framework.</li>
+				</ul>
+				<!-- -->
+				<h3 class="project-item">Results</h3>
+				<p>The client was satisfied with our work at the end of the semester.</p>
+				<ul class="project-item-list">
+					<li>Our approach was building simple games on top of a framework that was highly expandable and easy to install<br/> 
+					<!--Here is the overall architecture of the framework I designed:-->
+					</li>
+					<li>The games we focused on were social or casual, which had more appeal to our target group.</li>
+					<li>The core concept behind our games was the idea of progress:  By playing our games and achievement 
+					tracking the patient would know how far along was he in his recovery session.  This was the differencing 
+					factor of our solution which made it stand out from the other products that the client had tried.</li>
+				</ul>	
+				<p class="double-spacing">One of the most interesting aspects of this project was realtime tracking of the patient's exercise routines
+				in order to determine if the patient was doing the exercises correctly or not.  <br/>Our games used an inertial measurement
+				unit (IMU) in order to track range of motion, and a Wii Balance Board for tracking several exercises.  For the inertial 
+				measurement unit, I wrote the software required to make it work with our framework:  a server in C# (.NET) that read input
+				from the IMU and an ActionScript API that exposed this data to the games.</p>
+				
+        </div>
+	</div>
+	<div id="footermainPan">
+		<div id="footerPan">
+			<ul class="links">
+				<li>
+					<a href="index.html">Home</a>
+				</li>
+				<li>
+					<a href="resume.html">Resume</a>
+				</li>
+				<li>
+					<a href="portfolio.html">Portfolio</a>
+				</li>
+				<li>
+					<a href="blog.html">Blog</a>
+				</li>
+				<li>
+					<a href="contact.html">Contact</a>
+				</li>
+			</ul>
+			<p class="copyright">Content on this site is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/3.0/">Creative Commons 3.0 License</a>.</p>
+			<ul class="templateworld">
+				<li>Design By:</li>
+				<li><a href="http://www.templateworld.com">Template World</a></li>
+			</ul>
+		</div>
+	</div>
+</body>
+</html>
