@@ -8,7 +8,7 @@ ul{list-style-type:none;}
 #topPan img{width:208px; height:58px; position:absolute; top:35px; left:0px;}
 
 /*----NAVIGATION----*/
-#tabs { 	font-size:93%; 	line-height:normal; 	float:left; 	margin-top:4px; 	}
+#tabs { 	font-size:93%; 	line-height:normal; 	float:left; 	margin-top:5px; 	}
 #tabs ul { 	margin:0; 	padding:10px 10px 0 0px; 	list-style:none; 	}
 #tabs li { 	display:inline; 	margin:0; 	padding:0; 	}
 #tabs a { 	float:left; 	background:url("images/tableft.gif") no-repeat left top; 	margin:0; 	padding:0 0 0 4px; 	text-decoration:none; 	}

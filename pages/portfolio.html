@@ -4,46 +4,30 @@
 <head>
 	<title>Daniel Rodriguez</title>
 	<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
-	<meta http-equiv="X-UA-Compatible" content="IE=8"/>
+	<meta http-equiv="X-UA-Compatible" content="IE=8">
 	<link href="../style.css" rel="stylesheet" type="text/css" />
 	<script type="text/javascript">
 		var _gaq = _gaq || [];
 		_gaq.push(['_setAccount', 'UA-17305589-1']);
 		_gaq.push(['_trackPageview']);
-
 		(function() {
 			var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
 			ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
 			var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
 		})();
 	</script>
+	<script src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
+	<script src="../js/header_footer.js" type="text/javascript"></script>
+	<script type="text/javascript">
+		$(document).ready(function() {
+			loadHeader();
+			loadFooter();
+		});
+	</script>
 </head>
 <body>
 	<div id="topPan">
-		<div id="logo"> 
-			<h1>
-				<a href="index.html">Daniel Rodriguez</a></h1> 
-			<p>A game developer</p> 
-		</div> 
-		<div id="tabs">
-			<ul>
-				<li><a href="index.html">
-					<span>Home</span>
-				</a></li>
-				<li><a href="resume.html">
-						<span>Resume</span>
-				</a></li>
-				<li><a href="portfolio.html">
-						<span>Portfolio</span>
-				</a></li>
-				<!--li><a href="blog.html">
-						<span>Blog</span>
-				</a></li-->
-				<li><a href="contact.html">
-						<span>Contact</span>
-				</a></li>
-			</ul>
-		</div>
+		<!-- Header is injected here via JQuery-->
 	</div>
 	<div id="bodytopmainPan">
 		<div id="bodytopPan">
@@ -187,23 +171,7 @@
 	</div>
 	<div id="footermainPan">
 		<div id="footerPan">
-			<ul class="links">
-				<li>
-					<a href="index.html">Home</a>
-				</li>
-				<li>
-					<a href="resume.html">Resume</a>
-				</li>
-				<li>
-					<a href="portfolio.html">Portfolio</a>
-				</li>
-				<!--li>
-					<a href="blog.html">Blog</a>
-				</li-->
-				<li>
-					<a href="contact.html">Contact</a>
-				</li>
-			</ul>
+			<!-- Footer Links are injected here via JQuery-->
 			<p class="copyright">Content on this site is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/3.0/">Creative Commons 3.0 License</a>.</p>
 			<ul class="templateworld">
 				<li>Design By:</li>
