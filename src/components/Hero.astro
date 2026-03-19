@@ -65,7 +65,7 @@
     wrapper.classList.add('open');
     trigger.setAttribute('aria-expanded', 'true');
     if (dismissTimer) clearTimeout(dismissTimer);
-    dismissTimer = setTimeout(closePopover, 3000);
+    dismissTimer = setTimeout(closePopover, 6000);
   }
 
   if (wrapper && trigger && popover) {
@@ -206,7 +206,7 @@
     width: 280px;
     opacity: 0;
     pointer-events: none;
-    transition: opacity 0.15s;
+    transition: opacity 0.4s ease-out;
     z-index: 10;
     box-shadow: 0 8px 24px rgba(0,0,0,0.4);
     display: flex;
