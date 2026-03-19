@@ -1,0 +1,138 @@
+---
+---
+
+<section id="resume">
+    <div class="section-header">
+        <span class="section-number">04</span>
+        <h2 class="section-title">Resume</h2>
+        <div class="section-line"></div>
+    </div>
+
+    <div class="resume-cta">
+        <div class="resume-text">
+            <h3>Detailed experience &amp; education</h3>
+            <p>View inline or download as PDF. Covers iOS engineering, game development, and everything in between.</p>
+        </div>
+    </div>
+
+    <div class="resume-buttons">
+        <button class="resume-btn resume-btn-primary" id="view-resume-btn">View Resume</button>
+        <a href="/resumes/RodriguezDaniel_Resume.pdf" class="resume-btn resume-btn-secondary" download>Download PDF &darr;</a>
+    </div>
+
+    <div class="resume-preview" id="resume-preview">
+        <iframe src="/resumes/RodriguezDaniel_Resume.pdf"></iframe>
+    </div>
+</section>
+
+<script is:inline>
+    document.addEventListener('DOMContentLoaded', function() {
+        const viewBtn = document.getElementById('view-resume-btn');
+        const preview = document.getElementById('resume-preview');
+
+        if (viewBtn && preview) {
+            viewBtn.addEventListener('click', function() {
+                const isVisible = preview.classList.toggle('visible');
+                viewBtn.textContent = isVisible ? 'Hide Resume' : 'View Resume';
+            });
+        }
+    });
+</script>
+
+<style>
+    .resume-cta {
+        display: flex;
+        align-items: center;
+        gap: 2rem;
+        padding: 2rem;
+        background: var(--bg-card);
+        border: 1px solid var(--border);
+        border-radius: 8px;
+        margin-bottom: 2rem;
+    }
+
+    .resume-text {
+        flex: 1;
+    }
+
+    .resume-text h3 {
+        font-family: var(--display);
+        font-size: 1.2rem;
+        font-weight: 600;
+        margin-bottom: 0.4rem;
+    }
+
+    .resume-text p {
+        font-size: 0.85rem;
+        color: var(--text-dim);
+    }
+
+    .resume-buttons {
+        display: flex;
+        gap: 1rem;
+        margin-bottom: 2rem;
+    }
+
+    .resume-btn {
+        font-family: var(--mono);
+        font-size: 0.75rem;
+        padding: 0.65rem 1.5rem;
+        border-radius: 6px;
+        transition: all 0.15s;
+        white-space: nowrap;
+        letter-spacing: 0.03em;
+        cursor: pointer;
+        text-decoration: none;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .resume-btn-primary {
+        color: var(--bg-deep);
+        background: var(--accent);
+        border: 1px solid var(--accent);
+    }
+
+    .resume-btn-primary:hover {
+        background: #5de0d7;
+        transform: translateY(-1px);
+        box-shadow: 0 4px 16px rgba(78, 205, 196, 0.25);
+    }
+
+    .resume-btn-secondary {
+        color: var(--text);
+        background: transparent;
+        border: 1px solid var(--border);
+    }
+
+    .resume-btn-secondary:hover {
+        border-color: var(--border-hover);
+        color: var(--text);
+    }
+
+    .resume-preview {
+        background: var(--bg-card);
+        border: 1px solid var(--border);
+        border-radius: 8px;
+        overflow: hidden;
+        display: none;
+    }
+
+    .resume-preview.visible {
+        display: block;
+    }
+
+    .resume-preview iframe {
+        width: 100%;
+        height: 800px;
+        border: none;
+        display: block;
+    }
+
+    @media (max-width: 768px) {
+        .resume-buttons {
+            flex-direction: column;
+        }
+    }
+</style>
