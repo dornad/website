@@ -1,0 +1,90 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+---
+
+<BaseLayout title="404 — Game Over">
+    <main class="not-found">
+        <div class="content">
+            <div class="press-start">PRESS START</div>
+            <h1 class="game-over">GAME OVER</h1>
+            <p class="code">404 — Page not found</p>
+            <p class="flavor">You've wandered into the void.</p>
+            <a href="/" class="respawn-btn">Respawn at Home</a>
+        </div>
+    </main>
+</BaseLayout>
+
+<style>
+    .not-found {
+        min-height: calc(100vh - 56px);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 2rem;
+    }
+
+    .content {
+        text-align: center;
+    }
+
+    .press-start {
+        font-family: var(--mono);
+        font-size: 0.65rem;
+        color: var(--accent);
+        letter-spacing: 0.15em;
+        margin-bottom: 1.5rem;
+        animation: blink 1s step-end infinite;
+    }
+
+    @keyframes blink {
+        0%,
+        50% {
+            opacity: 1;
+        }
+        51%,
+        100% {
+            opacity: 0;
+        }
+    }
+
+    .game-over {
+        font-family: var(--display);
+        font-size: clamp(3rem, 10vw, 5rem);
+        font-weight: 800;
+        color: var(--accent-warm);
+        letter-spacing: -0.02em;
+        margin-bottom: 1rem;
+    }
+
+    .code {
+        font-family: var(--mono);
+        font-size: 0.8rem;
+        color: var(--text-secondary);
+        margin-bottom: 0.5rem;
+    }
+
+    .flavor {
+        font-family: var(--mono);
+        font-size: 0.7rem;
+        color: var(--text-dim);
+        margin-bottom: 2rem;
+    }
+
+    .respawn-btn {
+        font-family: var(--mono);
+        font-size: 0.7rem;
+        color: var(--accent);
+        text-decoration: none;
+        border: 1px solid var(--accent);
+        padding: 0.6rem 1.5rem;
+        border-radius: 4px;
+        display: inline-block;
+        transition: all 0.2s;
+        box-shadow: 0 0 12px var(--accent-glow);
+    }
+
+    .respawn-btn:hover {
+        background: var(--accent-glow);
+        box-shadow: 0 0 20px var(--accent-glow);
+    }
+</style>
