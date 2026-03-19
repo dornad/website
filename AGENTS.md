@@ -6,7 +6,7 @@ This is the source code for [danielrodriguez.name](https://danielrodriguez.name)
 
 The site is hosted on **GitHub Pages** with a custom domain, served over HTTPS via Let's Encrypt. No build step, no framework — just static files deployed from the `main` branch root.
 
-## Current State (March 2026)
+## Current State (Early March 2026)
 
 The site is currently a **placeholder / under-construction page**. It's a single `index.html` file with:
 
@@ -64,33 +64,34 @@ The placeholder is temporary. The goal is a full personal website redesign. Key 
 - **Core skills:** iOS development (Swift, SwiftUI, Swift concurrency), hybrid native+WebView architectures, AI/agentic tooling, developer experience (DevX)
 - **Side interests:** Game development (Godot, game jams via Global Game Jam), AR programming, kitesurfing
 - **Location:** NYC
-- **Handles:** @dornad (GitHub, Mastodon), /in/danielrodc (LinkedIn)
+- **Handles:** @dornad (GitHub, Mastodon), /in/danielrodc (LinkedIn), dornad.itch.io (itch.io), globalgamejam.org/users/dornad (GGJ)
+- **Handle origin:** "dornad" = "Dan Rod" reversed. Internet handle since ~1996 (Bogota, Colombia). First used as dornad@hotmail.com, pre-Microsoft acquisition.
+- **Domains:** danielrodriguez.name (primary), danielrodriguez.dev (→ /ios), danielrodriguez.games (→ /gamedev), dornad.studio (TBD). Also owns pekgames.studio and fediverse-play.dev (unused). All registered on Namecheap.
 
-### Design Direction (TBD — not yet finalized)
+### Design Direction — FINALIZED
 
-Initial brainstorming identified four possible directions:
+**"Clean Portfolio with Game DNA"** — A creative, game-inspired personal site that serves a broad audience. Subtle game references in an otherwise clean, professional portfolio. Equal weight given to iOS engineering and game dev / creative projects.
 
-1. **Interactive Portfolio / Playground** — shows skills through interactive demos and embedded projects
-2. **Narrative-Driven Personal Brand** — editorial-style journey through career (CMU → game dev → iOS → AI apps)
-3. **Developer-as-Product Landing Page** — single-page, bold hero, key skills, social proof, clear CTA
-4. **Creative / Game-Inspired** — leans into game dev side, interactive elements, memorable and unique
+- **Framework:** Astro (static site generator, component-based, deployed on GitHub Pages)
+- **Persona system:** URL-based entry points (`/`, `/ios`, `/gamedev`, `/creative`) that reorder content emphasis from the same content pool
+- **Full design spec:** See `DESIGN_SPEC.md` for complete details
 
-The final direction has not been chosen yet. The audience, vibe, and content priorities still need to be decided.
-
-### Content to Include (likely)
+### Content to Include
 
 - Updated bio reflecting iOS engineering focus and recent work
-- Portfolio / case studies (Adapter, Paperless Post, Homer, SongPop, game jam projects)
-- Links to GitHub, LinkedIn, Mastodon
+- Portfolio / case studies (Adapter, Warby Parker, Homer, SongPop, game jam projects)
+- Links to GitHub, LinkedIn, Mastodon, itch.io, GGJ profile
 - Game dev / side projects section (Global Game Jam entries, itch.io)
-- Resume (updated)
-- Possibly a blog
+- Resume (both downloadable PDF and rendered on-page)
+- Achievements section (Featured by Apple, BAFTA, GGJ streak, etc.)
+- CMU projects: Game Design coursework and Building Virtual Worlds (have photos/videos for most)
+- Blog deferred to future iteration
 
 ### Technical Preferences
 
 - Daniel is an iOS/Swift developer by trade; web dev is not his primary domain
-- The site should be simple to maintain — minimal or no build toolchain preferred
-- Should remain hostable on GitHub Pages
+- The site should be simple to maintain — Astro with markdown content collections
+- Hosted on GitHub Pages, deployed via GitHub Actions
 - AI coding agents will likely be used to build and iterate on the site
 
 ## File Structure
@@ -98,9 +99,10 @@ The final direction has not been chosen yet. The audience, vibe, and content pri
 ```
 .
 ├── AGENTS.md          # This file — context for AI coding agents
-├── CLAUDE.md          # Claude-specific instructions (references this file)
+├── CLAUDE.md          # Claude Code config (imports AGENTS.md)
+├── DESIGN_SPEC.md     # Full design specification for the website redesign
 ├── CNAME              # GitHub Pages custom domain config
-├── index.html         # Current placeholder page
+├── index.html         # Current placeholder page (will be replaced by Astro build)
 └── README.md          # Repo description
 ```
 
