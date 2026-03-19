@@ -1,5 +1,4 @@
 ---
-
 ---
 
 <section id="projects">
@@ -18,8 +17,11 @@
 
     <div class="projects-grid">
         <article class="project-card featured" data-category="ios">
-            <div class="project-thumb">
-                <div class="project-thumb-inner">&#128225;</div>
+            <div class="project-thumb thumb-light">
+                <img
+                    src="/images/projects/adapter.svg"
+                    alt="Adapter project thumbnail"
+                />
             </div>
             <div class="project-body">
                 <div class="project-category">iOS &mdash; Adapter</div>
@@ -40,7 +42,10 @@
 
         <article class="project-card" data-category="ios">
             <div class="project-thumb">
-                <div class="project-thumb-inner">&#128083;</div>
+                <img
+                    src="/images/projects/warby-parker.png"
+                    alt="Warby Parker iOS app icon thumbnail"
+                />
             </div>
             <div class="project-body">
                 <div class="project-category">iOS &mdash; Warby Parker</div>
@@ -59,9 +64,7 @@
         </article>
 
         <article class="project-card" data-category="gamedev">
-            <div class="project-thumb">
-                <div class="project-thumb-inner">&#127918;</div>
-            </div>
+            <div class="project-thumb">&#127918;</div>
             <div class="project-body">
                 <div class="project-category">
                     Game Dev &mdash; Global Game Jam
@@ -82,7 +85,10 @@
 
         <article class="project-card" data-category="ios">
             <div class="project-thumb">
-                <div class="project-thumb-inner">&#128218;</div>
+                <img
+                    src="/images/projects/homer.png"
+                    alt="Learn with Homer iOS app icon thumbnail"
+                />
             </div>
             <div class="project-body">
                 <div class="project-category">iOS &mdash; Homer Learning</div>
@@ -100,7 +106,10 @@
 
         <article class="project-card" data-category="gamedev">
             <div class="project-thumb">
-                <div class="project-thumb-inner">&#127925;</div>
+                <img
+                    src="/images/projects/songpop.png"
+                    alt="SongPop iOS app icon thumbnail"
+                />
             </div>
             <div class="project-body">
                 <div class="project-category">Game Dev &mdash; FreshPlanet</div>
@@ -118,9 +127,7 @@
         </article>
 
         <article class="project-card" data-category="creative">
-            <div class="project-thumb">
-                <div class="project-thumb-inner">&#127891;</div>
-            </div>
+            <div class="project-thumb">&#127891;</div>
             <div class="project-body">
                 <div class="project-category">Creative &mdash; CMU ETC</div>
                 <div class="project-title">Building Virtual Worlds</div>
@@ -223,20 +230,30 @@
         background: var(--bg-elevated);
         position: relative;
         overflow: hidden;
-    }
-
-    .project-card.featured .project-thumb {
-        height: 200px;
-    }
-
-    .project-thumb-inner {
-        width: 100%;
-        height: 100%;
         display: flex;
         align-items: center;
         justify-content: center;
         font-size: 2.5rem;
         opacity: 0.6;
+    }
+
+    .project-thumb img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .project-thumb.thumb-light {
+        background: #e8e8e8;
+    }
+
+    .project-thumb.thumb-light img {
+        max-height: 80px;
+        object-fit: contain;
+    }
+
+    .project-card.featured .project-thumb {
+        height: 200px;
     }
 
     .project-card[data-category="ios"] .project-thumb {
