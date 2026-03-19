@@ -1,0 +1,312 @@
+---
+---
+
+<header class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+  <div class="hero-content">
+    <div class="hero-label animate-in">Player One — NYC</div>
+    <h1 class="hero-name animate-in delay-1">
+      Daniel
+      <span class="line2">Rodriguez</span>
+    </h1>
+    <p class="hero-desc animate-in delay-2">
+      <strong>iOS Software Engineer</strong> building polished, human-centered apps.
+      <strong>Game developer</strong> by passion &mdash; unbroken Global Game Jam streak since 2019.
+      Carnegie Mellon <span class="etc-link-wrapper" id="etc-wrapper">
+        <button class="etc-link" id="etc-trigger" aria-expanded="false">ETC</button>
+        <span class="etc-popover" id="etc-popover" role="tooltip">
+          <span class="etc-popover-text">Entertainment Technology Center — a graduate program at the intersection of games, technology, and storytelling.</span>
+          <a href="https://etc.cmu.edu" target="_blank" rel="noopener" class="etc-popover-link">etc.cmu.edu &rarr;</a>
+        </span>
+      </span> grad.
+    </p>
+    <div class="hero-stats animate-in delay-3">
+      <div>
+        <div class="hero-stat-value">15+</div>
+        <div class="hero-stat-label">Years Exp</div>
+      </div>
+      <div>
+        <div class="hero-stat-value">7</div>
+        <div class="hero-stat-label">GGJ Streak</div>
+      </div>
+      <div>
+        <div class="hero-stat-value">1</div>
+        <div class="hero-stat-label">BAFTA</div>
+      </div>
+      <div>
+        <div class="hero-stat-value">&infin;</div>
+        <div class="hero-stat-label">Curiosity</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="hero-side">
+    <div class="hero-side-dot active"></div>
+    <div class="hero-side-dot"></div>
+    <div class="hero-side-dot"></div>
+    <div class="hero-side-dot"></div>
+    <div class="hero-side-dot"></div>
+  </div>
+</header>
+
+<script>
+  const wrapper = document.getElementById('etc-wrapper');
+  const trigger = document.getElementById('etc-trigger');
+  const popover = document.getElementById('etc-popover');
+  let dismissTimer = null;
+
+  function closePopover() {
+    wrapper.classList.remove('open');
+    trigger.setAttribute('aria-expanded', 'false');
+  }
+
+  function openPopover() {
+    wrapper.classList.add('open');
+    trigger.setAttribute('aria-expanded', 'true');
+    if (dismissTimer) clearTimeout(dismissTimer);
+    dismissTimer = setTimeout(closePopover, 3000);
+  }
+
+  if (wrapper && trigger && popover) {
+    trigger.addEventListener('click', (e) => {
+      e.stopPropagation();
+      if (wrapper.classList.contains('open')) {
+        closePopover();
+        if (dismissTimer) clearTimeout(dismissTimer);
+      } else {
+        openPopover();
+      }
+    });
+
+    document.addEventListener('click', (e) => {
+      if (!wrapper.contains(e.target as Node)) {
+        closePopover();
+        if (dismissTimer) clearTimeout(dismissTimer);
+      }
+    });
+  }
+</script>
+
+<style>
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 80% 60% at 70% 40%, rgba(78, 205, 196, 0.06) 0%, transparent 60%),
+      radial-gradient(ellipse 60% 50% at 20% 60%, rgba(108, 155, 255, 0.04) 0%, transparent 50%);
+    pointer-events: none;
+  }
+
+  .hero-grid {
+    position: absolute;
+    inset: 0;
+    background-image: radial-gradient(circle, var(--border) 0.5px, transparent 0.5px);
+    background-size: 32px 32px;
+    opacity: 0.4;
+    pointer-events: none;
+    mask-image: radial-gradient(ellipse 70% 60% at 50% 50%, black 20%, transparent 70%);
+  }
+
+  .hero-content {
+    max-width: 1120px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    padding-top: 56px;
+    position: relative;
+    z-index: 1;
+    width: 100%;
+  }
+
+  .hero-label {
+    font-family: var(--mono);
+    font-size: 0.7rem;
+    font-weight: 300;
+    color: var(--accent);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .hero-label::before {
+    content: '';
+    width: 24px;
+    height: 1px;
+    background: var(--accent);
+  }
+
+  .hero-name {
+    font-family: var(--display);
+    font-size: clamp(3rem, 8vw, 5.5rem);
+    font-weight: 800;
+    line-height: 0.95;
+    letter-spacing: -0.03em;
+    margin-bottom: 1.5rem;
+  }
+
+  .hero-name .line2 {
+    color: var(--text-secondary);
+    display: block;
+  }
+
+  .hero-desc {
+    font-size: 1.15rem;
+    font-weight: 300;
+    color: var(--text-secondary);
+    max-width: 520px;
+    line-height: 1.7;
+    margin-bottom: 2.5rem;
+  }
+
+  .hero-desc strong {
+    color: var(--text);
+    font-weight: 500;
+  }
+
+  .etc-link-wrapper {
+    position: relative;
+    display: inline;
+  }
+
+  .etc-link {
+    color: var(--accent);
+    text-decoration: none;
+    border-bottom: 1px dashed var(--accent);
+    cursor: pointer;
+    background: none;
+    border-left: none;
+    border-right: none;
+    border-top: none;
+    padding: 0;
+    font: inherit;
+  }
+
+  .etc-link:hover { border-bottom-style: solid; }
+
+  .etc-popover {
+    position: absolute;
+    bottom: calc(100% + 8px);
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 0.75rem 1rem;
+    width: 280px;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.15s;
+    z-index: 10;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.4);
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .etc-link-wrapper.open .etc-popover {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .etc-popover::before {
+    content: '';
+    position: absolute;
+    top: -12px;
+    left: 0;
+    right: 0;
+    height: 12px;
+  }
+
+  .etc-popover-text {
+    font-family: var(--body);
+    font-size: 0.75rem;
+    font-weight: 400;
+    color: var(--text-secondary);
+    line-height: 1.5;
+  }
+
+  .etc-popover-link {
+    font-family: var(--mono);
+    font-size: 0.7rem;
+    color: var(--accent);
+    text-decoration: none;
+    padding-top: 0.5rem;
+    border-top: 1px solid var(--border);
+  }
+
+  .etc-popover-link:hover { text-decoration: underline; }
+
+  .hero-stats {
+    display: flex;
+    gap: 2.5rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--border);
+  }
+
+  .hero-stat-value {
+    font-family: var(--display);
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: var(--accent);
+    line-height: 1;
+  }
+
+  .hero-stat-label {
+    font-family: var(--mono);
+    font-size: 0.65rem;
+    color: var(--text-dim);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-top: 0.4rem;
+  }
+
+  .hero-side {
+    position: absolute;
+    right: 2rem;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    opacity: 0.3;
+  }
+
+  .hero-side-dot {
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background: var(--text-dim);
+  }
+
+  .hero-side-dot.active { background: var(--accent); opacity: 1; }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .animate-in {
+    animation: fadeUp 0.6s ease-out forwards;
+    opacity: 0;
+  }
+
+  .delay-1 { animation-delay: 0.1s; }
+  .delay-2 { animation-delay: 0.2s; }
+  .delay-3 { animation-delay: 0.3s; }
+
+  @media (max-width: 768px) {
+    .hero-stats { flex-wrap: wrap; gap: 1.5rem; }
+    .hero-side { display: none; }
+  }
+</style>

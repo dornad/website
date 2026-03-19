@@ -1,0 +1,1137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daniel Rodriguez — iOS Engineer & Game Developer</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Anybody:wght@400;600;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,400&family=JetBrains+Mono:wght@300;400&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --bg-deep: #08090c;
+            --bg: #0d0f14;
+            --bg-elevated: #13161e;
+            --bg-card: #171b24;
+            --border: #1e2330;
+            --border-hover: #2a3040;
+            --text: #e2e6ef;
+            --text-secondary: #8891a4;
+            --text-dim: #505a6e;
+            --accent: #4ecdc4;
+            --accent-glow: rgba(78, 205, 196, 0.15);
+            --accent-warm: #ff6b6b;
+            --accent-gold: #ffd93d;
+            --accent-blue: #6c9bff;
+            --display: 'Anybody', system-ui, sans-serif;
+            --body: 'DM Sans', system-ui, sans-serif;
+            --mono: 'JetBrains Mono', monospace;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            scrollbar-color: var(--border) var(--bg-deep);
+        }
+
+        body {
+            font-family: var(--body);
+            background: var(--bg-deep);
+            color: var(--text);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* ═══════════════════════════════════════
+           NAVIGATION
+           ═══════════════════════════════════════ */
+
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 100;
+            backdrop-filter: blur(16px);
+            background: rgba(8, 9, 12, 0.8);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .nav-inner {
+            max-width: 1120px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            height: 56px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .nav-logo {
+            font-family: var(--display);
+            font-weight: 800;
+            font-size: 1.1rem;
+            color: var(--text);
+            text-decoration: none;
+            letter-spacing: -0.02em;
+        }
+
+        .nav-logo span { color: var(--accent); }
+
+        .nav-links {
+            display: flex;
+            gap: 0.25rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            font-family: var(--mono);
+            font-size: 0.7rem;
+            font-weight: 300;
+            color: var(--text-secondary);
+            text-decoration: none;
+            padding: 0.4rem 0.75rem;
+            border-radius: 4px;
+            transition: all 0.15s;
+            letter-spacing: 0.03em;
+        }
+
+        .nav-links a:hover {
+            color: var(--text);
+            background: var(--bg-elevated);
+        }
+
+        .nav-persona {
+            display: flex;
+            gap: 2px;
+            background: var(--bg-elevated);
+            border-radius: 6px;
+            padding: 2px;
+            border: 1px solid var(--border);
+        }
+
+        .nav-persona a {
+            font-family: var(--mono);
+            font-size: 0.6rem;
+            color: var(--text-dim);
+            text-decoration: none;
+            padding: 0.3rem 0.6rem;
+            border-radius: 4px;
+            transition: all 0.2s;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+        }
+
+        .nav-persona a:hover { color: var(--text-secondary); }
+        .nav-persona a.active {
+            background: var(--accent);
+            color: var(--bg-deep);
+            font-weight: 400;
+        }
+
+        /* ═══════════════════════════════════════
+           HERO
+           ═══════════════════════════════════════ */
+
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-bg {
+            position: absolute;
+            inset: 0;
+            background:
+                radial-gradient(ellipse 80% 60% at 70% 40%, rgba(78, 205, 196, 0.06) 0%, transparent 60%),
+                radial-gradient(ellipse 60% 50% at 20% 60%, rgba(108, 155, 255, 0.04) 0%, transparent 50%);
+            pointer-events: none;
+        }
+
+        /* Subtle dot grid */
+        .hero-grid {
+            position: absolute;
+            inset: 0;
+            background-image: radial-gradient(circle, var(--border) 0.5px, transparent 0.5px);
+            background-size: 32px 32px;
+            opacity: 0.4;
+            pointer-events: none;
+            mask-image: radial-gradient(ellipse 70% 60% at 50% 50%, black 20%, transparent 70%);
+        }
+
+        .hero-content {
+            max-width: 1120px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            padding-top: 56px;
+            position: relative;
+            z-index: 1;
+            width: 100%;
+        }
+
+        .hero-label {
+            font-family: var(--mono);
+            font-size: 0.7rem;
+            font-weight: 300;
+            color: var(--accent);
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .hero-label::before {
+            content: '';
+            width: 24px;
+            height: 1px;
+            background: var(--accent);
+        }
+
+        .hero-name {
+            font-family: var(--display);
+            font-size: clamp(3rem, 8vw, 5.5rem);
+            font-weight: 800;
+            line-height: 0.95;
+            letter-spacing: -0.03em;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero-name .line2 {
+            color: var(--text-secondary);
+            display: block;
+        }
+
+        .hero-desc {
+            font-size: 1.15rem;
+            font-weight: 300;
+            color: var(--text-secondary);
+            max-width: 520px;
+            line-height: 1.7;
+            margin-bottom: 2.5rem;
+        }
+
+        .hero-desc strong {
+            color: var(--text);
+            font-weight: 500;
+        }
+
+        .etc-link {
+            color: var(--accent);
+            text-decoration: none;
+            border-bottom: 1px dashed var(--accent);
+            position: relative;
+            cursor: help;
+        }
+
+        .etc-link:hover { border-bottom-style: solid; }
+
+        .etc-link::after {
+            content: 'Entertainment Technology Center — a graduate program at the intersection of games, technology, and storytelling.';
+            position: absolute;
+            bottom: calc(100% + 8px);
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            padding: 0.75rem 1rem;
+            font-family: var(--body);
+            font-size: 0.75rem;
+            font-weight: 400;
+            color: var(--text-secondary);
+            line-height: 1.5;
+            width: 280px;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.2s;
+            z-index: 10;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.4);
+        }
+
+        .etc-link:hover::after { opacity: 1; }
+
+        .hero-stats {
+            display: flex;
+            gap: 2.5rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--border);
+        }
+
+        .hero-stat-value {
+            font-family: var(--display);
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: var(--accent);
+            line-height: 1;
+        }
+
+        .hero-stat-label {
+            font-family: var(--mono);
+            font-size: 0.65rem;
+            color: var(--text-dim);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-top: 0.4rem;
+        }
+
+        /* Side decoration */
+        .hero-side {
+            position: absolute;
+            right: 2rem;
+            top: 50%;
+            transform: translateY(-50%);
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            opacity: 0.3;
+        }
+
+        .hero-side-dot {
+            width: 4px;
+            height: 4px;
+            border-radius: 50%;
+            background: var(--text-dim);
+        }
+
+        .hero-side-dot.active { background: var(--accent); opacity: 1; }
+
+        /* ═══════════════════════════════════════
+           SECTIONS (shared)
+           ═══════════════════════════════════════ */
+
+        section {
+            max-width: 1120px;
+            margin: 0 auto;
+            padding: 6rem 2rem;
+        }
+
+        .section-header {
+            display: flex;
+            align-items: baseline;
+            gap: 1rem;
+            margin-bottom: 3rem;
+        }
+
+        .section-number {
+            font-family: var(--mono);
+            font-size: 0.7rem;
+            color: var(--accent);
+            letter-spacing: 0.1em;
+        }
+
+        .section-title {
+            font-family: var(--display);
+            font-size: 2rem;
+            font-weight: 600;
+            letter-spacing: -0.02em;
+        }
+
+        .section-line {
+            flex: 1;
+            height: 1px;
+            background: var(--border);
+        }
+
+        /* ═══════════════════════════════════════
+           ABOUT
+           ═══════════════════════════════════════ */
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+        }
+
+        .about-text {
+            font-size: 1.05rem;
+            font-weight: 300;
+            color: var(--text-secondary);
+            line-height: 1.8;
+        }
+
+        .about-text p + p { margin-top: 1.25rem; }
+        .about-text strong { color: var(--text); font-weight: 500; }
+
+        .about-tracks {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .track-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 1.5rem;
+            transition: all 0.2s;
+        }
+
+        .track-card:hover {
+            border-color: var(--border-hover);
+            transform: translateY(-2px);
+        }
+
+        .track-icon {
+            font-size: 1.5rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .track-name {
+            font-family: var(--display);
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 0.35rem;
+        }
+
+        .track-desc {
+            font-size: 0.85rem;
+            color: var(--text-dim);
+            line-height: 1.5;
+        }
+
+        .track-tag {
+            display: inline-block;
+            font-family: var(--mono);
+            font-size: 0.6rem;
+            color: var(--accent);
+            background: var(--accent-glow);
+            padding: 0.2rem 0.5rem;
+            border-radius: 3px;
+            margin-top: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+        }
+
+        /* ═══════════════════════════════════════
+           PROJECTS
+           ═══════════════════════════════════════ */
+
+        .projects-filter {
+            display: flex;
+            gap: 0.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .filter-btn {
+            font-family: var(--mono);
+            font-size: 0.65rem;
+            color: var(--text-dim);
+            background: none;
+            border: 1px solid var(--border);
+            padding: 0.35rem 0.75rem;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.15s;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+        }
+
+        .filter-btn:hover { color: var(--text-secondary); border-color: var(--border-hover); }
+        .filter-btn.active { color: var(--accent); border-color: var(--accent); background: var(--accent-glow); }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.25rem;
+        }
+
+        .project-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            overflow: hidden;
+            transition: all 0.25s;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .project-card:hover {
+            border-color: var(--border-hover);
+            transform: translateY(-3px);
+            box-shadow: 0 12px 40px rgba(0,0,0,0.3);
+        }
+
+        .project-thumb {
+            height: 160px;
+            background: var(--bg-elevated);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .project-thumb-inner {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            opacity: 0.6;
+        }
+
+        /* Project category color strips */
+        .project-card[data-category="ios"] .project-thumb { border-top: 2px solid var(--accent-blue); }
+        .project-card[data-category="gamedev"] .project-thumb { border-top: 2px solid var(--accent-warm); }
+        .project-card[data-category="creative"] .project-thumb { border-top: 2px solid var(--accent-gold); }
+
+        .project-body { padding: 1.25rem; }
+
+        .project-category {
+            font-family: var(--mono);
+            font-size: 0.6rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 0.4rem;
+        }
+
+        .project-card[data-category="ios"] .project-category { color: var(--accent-blue); }
+        .project-card[data-category="gamedev"] .project-category { color: var(--accent-warm); }
+        .project-card[data-category="creative"] .project-category { color: var(--accent-gold); }
+
+        .project-title {
+            font-family: var(--display);
+            font-size: 1.05rem;
+            font-weight: 600;
+            margin-bottom: 0.4rem;
+            letter-spacing: -0.01em;
+        }
+
+        .project-desc {
+            font-size: 0.8rem;
+            color: var(--text-dim);
+            line-height: 1.5;
+        }
+
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.35rem;
+            margin-top: 0.85rem;
+        }
+
+        .project-tag {
+            font-family: var(--mono);
+            font-size: 0.55rem;
+            color: var(--text-dim);
+            border: 1px solid var(--border);
+            padding: 0.15rem 0.45rem;
+            border-radius: 3px;
+        }
+
+        /* Featured project (spans 2 cols) */
+        .project-card.featured {
+            grid-column: span 2;
+        }
+
+        .project-card.featured .project-thumb { height: 200px; }
+
+        /* ═══════════════════════════════════════
+           ACHIEVEMENTS
+           ═══════════════════════════════════════ */
+
+        .achievements-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 1rem;
+        }
+
+        .achievement {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            padding: 1.25rem;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            transition: all 0.2s;
+        }
+
+        .achievement:hover {
+            border-color: var(--border-hover);
+            transform: translateY(-1px);
+        }
+
+        .achievement-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            flex-shrink: 0;
+        }
+
+        .achievement-icon.gold { background: rgba(255, 217, 61, 0.1); }
+        .achievement-icon.teal { background: var(--accent-glow); }
+        .achievement-icon.red { background: rgba(255, 107, 107, 0.1); }
+        .achievement-icon.blue { background: rgba(108, 155, 255, 0.1); }
+
+        .achievement-title {
+            font-family: var(--display);
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 0.2rem;
+        }
+
+        .achievement-desc {
+            font-size: 0.78rem;
+            color: var(--text-dim);
+            line-height: 1.4;
+        }
+
+        .achievement-year {
+            font-family: var(--mono);
+            font-size: 0.6rem;
+            color: var(--text-dim);
+            margin-top: 0.4rem;
+            letter-spacing: 0.05em;
+        }
+
+        /* ═══════════════════════════════════════
+           RESUME
+           ═══════════════════════════════════════ */
+
+        .resume-cta {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+            padding: 2rem;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+        }
+
+        .resume-text {
+            flex: 1;
+        }
+
+        .resume-text h3 {
+            font-family: var(--display);
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 0.4rem;
+        }
+
+        .resume-text p {
+            font-size: 0.85rem;
+            color: var(--text-dim);
+        }
+
+        .resume-btn {
+            font-family: var(--mono);
+            font-size: 0.75rem;
+            color: var(--bg-deep);
+            background: var(--accent);
+            text-decoration: none;
+            padding: 0.65rem 1.5rem;
+            border-radius: 6px;
+            transition: all 0.15s;
+            white-space: nowrap;
+            letter-spacing: 0.03em;
+        }
+
+        .resume-btn:hover {
+            background: #5de0d7;
+            transform: translateY(-1px);
+            box-shadow: 0 4px 16px rgba(78, 205, 196, 0.25);
+        }
+
+        /* ═══════════════════════════════════════
+           CONTACT / LINKS
+           ═══════════════════════════════════════ */
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 1rem;
+        }
+
+        .contact-link {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 1.5rem 1rem;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            text-decoration: none;
+            color: var(--text-secondary);
+            transition: all 0.2s;
+        }
+
+        .contact-link:hover {
+            border-color: var(--accent);
+            color: var(--text);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+        }
+
+        .contact-link:hover .contact-icon { color: var(--accent); }
+
+        .contact-icon {
+            width: 24px;
+            height: 24px;
+            transition: color 0.2s;
+        }
+
+        .contact-name {
+            font-family: var(--mono);
+            font-size: 0.7rem;
+            letter-spacing: 0.05em;
+        }
+
+        .contact-handle {
+            font-size: 0.65rem;
+            color: var(--text-dim);
+        }
+
+        /* ═══════════════════════════════════════
+           FOOTER
+           ═══════════════════════════════════════ */
+
+        footer {
+            max-width: 1120px;
+            margin: 0 auto;
+            padding: 2rem;
+            border-top: 1px solid var(--border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .footer-left {
+            font-family: var(--mono);
+            font-size: 0.65rem;
+            color: var(--text-dim);
+        }
+
+        .footer-right {
+            font-family: var(--mono);
+            font-size: 0.6rem;
+            color: var(--text-dim);
+        }
+
+        .footer-right a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+
+        /* ═══════════════════════════════════════
+           ANIMATIONS
+           ═══════════════════════════════════════ */
+
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .animate-in {
+            animation: fadeUp 0.6s ease-out forwards;
+            opacity: 0;
+        }
+
+        .delay-1 { animation-delay: 0.1s; }
+        .delay-2 { animation-delay: 0.2s; }
+        .delay-3 { animation-delay: 0.3s; }
+        .delay-4 { animation-delay: 0.4s; }
+        .delay-5 { animation-delay: 0.5s; }
+
+        /* ═══════════════════════════════════════
+           RESPONSIVE
+           ═══════════════════════════════════════ */
+
+        @media (max-width: 768px) {
+            .about-grid { grid-template-columns: 1fr; }
+            .projects-grid { grid-template-columns: 1fr; }
+            .project-card.featured { grid-column: span 1; }
+            .contact-grid { grid-template-columns: repeat(2, 1fr); }
+            .hero-stats { flex-wrap: wrap; gap: 1.5rem; }
+            .hero-side { display: none; }
+            .nav-persona { display: none; }
+            .resume-cta { flex-direction: column; align-items: flex-start; }
+            .achievements-grid { grid-template-columns: 1fr; }
+        }
+
+        @media (max-width: 480px) {
+            .projects-grid { grid-template-columns: 1fr; }
+            .contact-grid { grid-template-columns: 1fr; }
+            .nav-links { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ═══════ NAVIGATION ═══════ -->
+    <nav>
+        <div class="nav-inner">
+            <a href="#" class="nav-logo">daniel rod<span>.</span></a>
+
+            <div class="nav-persona">
+                <a href="#" class="active">All</a>
+                <a href="#/ios">iOS</a>
+                <a href="#/gamedev">GameDev</a>
+                <a href="#/creative">Creative</a>
+            </div>
+
+            <ul class="nav-links">
+                <li><a href="#about">About</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#achievements">Achievements</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- ═══════ HERO ═══════ -->
+    <header class="hero">
+        <div class="hero-bg"></div>
+        <div class="hero-grid"></div>
+        <div class="hero-content">
+            <div class="hero-label animate-in">Player One &mdash; NYC</div>
+            <h1 class="hero-name animate-in delay-1">
+                Daniel
+                <span class="line2">Rodriguez</span>
+            </h1>
+            <p class="hero-desc animate-in delay-2">
+                <strong>iOS Software Engineer</strong> building polished, human-centered apps.
+                <strong>Game developer</strong> by passion &mdash; unbroken Global Game Jam streak since 2019.
+                Carnegie Mellon <a href="https://etc.cmu.edu" target="_blank" rel="noopener" class="etc-link" title="Entertainment Technology Center — a graduate program at the intersection of games, technology, and storytelling">ETC</a> grad.
+            </p>
+            <div class="hero-stats animate-in delay-3">
+                <div>
+                    <div class="hero-stat-value">15+</div>
+                    <div class="hero-stat-label">Years Exp</div>
+                </div>
+                <div>
+                    <div class="hero-stat-value">7</div>
+                    <div class="hero-stat-label">GGJ Streak</div>
+                </div>
+                <div>
+                    <div class="hero-stat-value">1</div>
+                    <div class="hero-stat-label">BAFTA</div>
+                </div>
+                <div>
+                    <div class="hero-stat-value">&infin;</div>
+                    <div class="hero-stat-label">Curiosity</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="hero-side">
+            <div class="hero-side-dot active"></div>
+            <div class="hero-side-dot"></div>
+            <div class="hero-side-dot"></div>
+            <div class="hero-side-dot"></div>
+            <div class="hero-side-dot"></div>
+        </div>
+    </header>
+
+    <!-- ═══════ ABOUT ═══════ -->
+    <section id="about">
+        <div class="section-header">
+            <span class="section-number">01</span>
+            <h2 class="section-title">About</h2>
+            <div class="section-line"></div>
+        </div>
+        <div class="about-grid">
+            <div class="about-text">
+                <p>I&rsquo;m a software engineer who moves between two worlds: building <strong>production iOS apps</strong> used by millions and crafting <strong>games and interactive experiences</strong> with small, scrappy teams.</p>
+                <p>Most recently I was the <strong>sole iOS engineer at Adapter</strong>, an AI assistant startup, where I took the app from zero to the App Store in under a year. Before that, I spent years at <strong>Warby Parker</strong> building AR and measurement tools that Apple featured.</p>
+                <p>I hold a Master&rsquo;s from <strong>Carnegie Mellon&rsquo;s Entertainment Technology Center</strong>, where I learned to think at the intersection of technology, storytelling, and design. That perspective shapes everything I build.</p>
+            </div>
+            <div class="about-tracks">
+                <div class="track-card">
+                    <div class="track-icon">&gt;_</div>
+                    <div class="track-name">iOS Engineering</div>
+                    <div class="track-desc">Swift, SwiftUI, UIKit, ARKit, RealityKit. Hybrid native+WebView architectures. AI-native workflows.</div>
+                    <span class="track-tag">Primary Class</span>
+                </div>
+                <div class="track-card">
+                    <div class="track-icon">&#9670;</div>
+                    <div class="track-name">Game Development</div>
+                    <div class="track-desc">Godot, GDScript, C#. Global Game Jam veteran. Rapid prototyping with small teams under pressure.</div>
+                    <span class="track-tag" style="background: rgba(255, 107, 107, 0.1); color: var(--accent-warm);">Active Subclass</span>
+                </div>
+                <div class="track-card">
+                    <div class="track-icon">&#10047;</div>
+                    <div class="track-name">Creative &amp; Experimental</div>
+                    <div class="track-desc">AR prototypes, interactive installations, cross-disciplinary side projects. Tinkering is a core trait.</div>
+                    <span class="track-tag" style="background: rgba(255, 217, 61, 0.1); color: var(--accent-gold);">Passive Skill</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════ PROJECTS ═══════ -->
+    <section id="projects">
+        <div class="section-header">
+            <span class="section-number">02</span>
+            <h2 class="section-title">Inventory</h2>
+            <div class="section-line"></div>
+        </div>
+
+        <div class="projects-filter">
+            <button class="filter-btn active">All</button>
+            <button class="filter-btn">iOS</button>
+            <button class="filter-btn">Game Dev</button>
+            <button class="filter-btn">Creative</button>
+        </div>
+
+        <div class="projects-grid">
+            <div class="project-card featured" data-category="ios">
+                <div class="project-thumb">
+                    <div class="project-thumb-inner">&#128225;</div>
+                </div>
+                <div class="project-body">
+                    <div class="project-category">iOS &mdash; Adapter</div>
+                    <div class="project-title">AI Assistant App</div>
+                    <div class="project-desc">Sole iOS engineer. Built from zero to App Store in under a year. Hybrid native + WebView architecture with AI-native workflow, Share Extension, and SSE streaming.</div>
+                    <div class="project-tags">
+                        <span class="project-tag">Swift</span>
+                        <span class="project-tag">SwiftUI</span>
+                        <span class="project-tag">WebKit</span>
+                        <span class="project-tag">SSE</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card" data-category="ios">
+                <div class="project-thumb">
+                    <div class="project-thumb-inner">&#128083;</div>
+                </div>
+                <div class="project-body">
+                    <div class="project-category">iOS &mdash; Warby Parker</div>
+                    <div class="project-title">AR Try-On &amp; Measurements</div>
+                    <div class="project-desc">Featured by Apple. AR-powered virtual try-on and facial measurement tools.</div>
+                    <div class="project-tags">
+                        <span class="project-tag">ARKit</span>
+                        <span class="project-tag">RealityKit</span>
+                        <span class="project-tag">SceneKit</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card" data-category="gamedev">
+                <div class="project-thumb">
+                    <div class="project-thumb-inner">&#127918;</div>
+                </div>
+                <div class="project-body">
+                    <div class="project-category">Game Dev &mdash; Global Game Jam</div>
+                    <div class="project-title">Game Jam Collection</div>
+                    <div class="project-desc">Unbroken streak since 2019. Small teams, 48-hour builds, Godot engine.</div>
+                    <div class="project-tags">
+                        <span class="project-tag">Godot</span>
+                        <span class="project-tag">GDScript</span>
+                        <span class="project-tag">C#</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card" data-category="ios">
+                <div class="project-thumb">
+                    <div class="project-thumb-inner">&#128218;</div>
+                </div>
+                <div class="project-body">
+                    <div class="project-category">iOS &mdash; Homer Learning</div>
+                    <div class="project-title">Learn With Homer</div>
+                    <div class="project-desc">Children&rsquo;s reading app for ages 3&ndash;6. Fun, didactic approach to early literacy.</div>
+                    <div class="project-tags">
+                        <span class="project-tag">iOS</span>
+                        <span class="project-tag">UIKit</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card" data-category="gamedev">
+                <div class="project-thumb">
+                    <div class="project-thumb-inner">&#127925;</div>
+                </div>
+                <div class="project-body">
+                    <div class="project-category">Game Dev &mdash; FreshPlanet</div>
+                    <div class="project-title">SongPop</div>
+                    <div class="project-desc">#1 Social Game of 2012. BAFTA award winner. Music trivia played by millions.</div>
+                    <div class="project-tags">
+                        <span class="project-tag">iOS</span>
+                        <span class="project-tag">Android</span>
+                        <span class="project-tag">Facebook</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card" data-category="creative">
+                <div class="project-thumb">
+                    <div class="project-thumb-inner">&#127891;</div>
+                </div>
+                <div class="project-body">
+                    <div class="project-category">Creative &mdash; CMU ETC</div>
+                    <div class="project-title">Building Virtual Worlds</div>
+                    <div class="project-desc">Semester-long interdisciplinary course. Rapid-fire world building with diverse teams.</div>
+                    <div class="project-tags">
+                        <span class="project-tag">Unity</span>
+                        <span class="project-tag">Panda3D</span>
+                        <span class="project-tag">Python</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════ ACHIEVEMENTS ═══════ -->
+    <section id="achievements">
+        <div class="section-header">
+            <span class="section-number">03</span>
+            <h2 class="section-title">Achievements Unlocked</h2>
+            <div class="section-line"></div>
+        </div>
+
+        <div class="achievements-grid">
+            <div class="achievement">
+                <div class="achievement-icon gold">&#9733;</div>
+                <div>
+                    <div class="achievement-title">App Store Spotlight</div>
+                    <div class="achievement-desc">Contributed to multiple apps featured in Apple&rsquo;s App Store editorial picks, including Warby Parker and Paperless Post.</div>
+                    <div class="achievement-year">Warby Parker &middot; Paperless Post</div>
+                </div>
+            </div>
+
+            <div class="achievement">
+                <div class="achievement-icon red">&#127942;</div>
+                <div>
+                    <div class="achievement-title">BAFTA Award</div>
+                    <div class="achievement-desc">SongPop won the BAFTA for Social/Online Game. Music trivia played by millions worldwide.</div>
+                    <div class="achievement-year">FreshPlanet &mdash; 2013</div>
+                </div>
+            </div>
+
+            <div class="achievement">
+                <div class="achievement-icon teal">&#128293;</div>
+                <div>
+                    <div class="achievement-title">Game Jam Streak</div>
+                    <div class="achievement-desc">Unbroken Global Game Jam streak since 2019, plus additional jams. New game every year, 48 hours, small teams.</div>
+                    <div class="achievement-year">2019 &mdash; Present</div>
+                </div>
+            </div>
+
+            <div class="achievement">
+                <div class="achievement-icon blue">&#128640;</div>
+                <div>
+                    <div class="achievement-title">Zero to App Store</div>
+                    <div class="achievement-desc">Sole iOS engineer at Adapter. Built and shipped an AI assistant app from zero to App Store in under a year.</div>
+                    <div class="achievement-year">Adapter &mdash; 2025</div>
+                </div>
+            </div>
+
+            <div class="achievement">
+                <div class="achievement-icon gold">&#127979;</div>
+                <div>
+                    <div class="achievement-title">Carnegie Mellon ETC</div>
+                    <div class="achievement-desc">Master&rsquo;s in Entertainment Technology. Games, technology, and storytelling.</div>
+                    <div class="achievement-year">Pittsburgh &rarr; NYC</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════ RESUME ═══════ -->
+    <section id="resume">
+        <div class="section-header">
+            <span class="section-number">04</span>
+            <h2 class="section-title">Resume</h2>
+            <div class="section-line"></div>
+        </div>
+        <div class="resume-cta">
+            <div class="resume-text">
+                <h3>Detailed experience &amp; education</h3>
+                <p>View inline or download as PDF. Covers iOS engineering, game development, and everything in between.</p>
+            </div>
+            <a href="#" class="resume-btn">View Resume &rarr;</a>
+        </div>
+    </section>
+
+    <!-- ═══════ CONTACT ═══════ -->
+    <section id="contact">
+        <div class="section-header">
+            <span class="section-number">05</span>
+            <h2 class="section-title">Connect</h2>
+            <div class="section-line"></div>
+        </div>
+
+        <div class="contact-grid">
+            <a class="contact-link" href="https://www.linkedin.com/in/danielrodc/" target="_blank" rel="noopener">
+                <svg class="contact-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+                <span class="contact-name">LinkedIn</span>
+                <span class="contact-handle">/in/danielrodc</span>
+            </a>
+            <a class="contact-link" href="https://iosdev.space/@dornad" target="_blank" rel="me noopener">
+                <svg class="contact-icon" viewBox="0 0 74 79" fill="currentColor"><path d="M73.7014 17.4323C72.5616 9.05152 65.1774 2.4469 56.424 0.928548C55.1296 0.707468 49.3417 0 36.3901 0H36.2933C23.3418 0 20.7235 0.707468 19.4291 0.928548C10.934 2.40066 3.11337 8.16918 1.27958 16.5618C0.390021 20.5832 0.290289 25.0271 0.417392 29.0906C0.601281 34.9903 0.656556 40.8834 1.24275 46.7561C1.62829 50.5974 2.30473 54.4042 3.26621 58.1434C5.07719 65.0816 12.7627 70.7767 19.5549 73.0574C26.8362 75.4365 34.6769 75.8675 42.2411 74.3018C43.1225 74.1217 43.9988 73.9127 44.8694 73.6754C46.8047 73.1327 49.0771 72.5115 50.7735 71.2373C50.7965 71.2197 50.8151 71.197 50.828 71.1711C50.8409 71.1452 50.8477 71.1168 50.848 71.088V65.3553C50.8473 65.3294 50.8399 65.304 50.8266 65.2815C50.8133 65.259 50.7946 65.2401 50.7721 65.2264C50.7496 65.2128 50.7241 65.2048 50.6979 65.2032C50.6717 65.2016 50.6455 65.2065 50.6218 65.2174C46.8036 66.1148 42.8824 66.5685 38.9474 66.5685C29.0884 66.5685 26.7185 61.8983 26.0422 60.1678C25.4645 58.6474 25.0853 57.0653 24.9129 55.4538C24.9124 55.427 24.9185 55.4005 24.9307 55.3766C24.9428 55.3527 24.9606 55.3321 24.9826 55.3167C25.0046 55.3013 25.0301 55.2916 25.0568 55.2883C25.0835 55.285 25.1106 55.2882 25.1358 55.2978C28.8988 56.1808 32.7614 56.6288 36.6402 56.6326C37.9283 56.6326 39.2132 56.6326 40.5013 56.5926C45.2746 56.4446 50.2992 56.1889 54.9894 55.2306C55.1082 55.2066 55.2269 55.1793 55.3489 55.1553C62.8982 53.6478 69.9927 49.3417 70.8613 38.135C70.8943 37.7156 70.9863 32.7995 70.9863 32.3607C70.9896 30.7292 71.4874 22.4556 73.7014 17.4323ZM61.4747 27.2075V45.7007H54.2844V27.749C54.2844 23.4865 52.6514 21.3162 49.3514 21.3162C45.7354 21.3162 43.9246 23.8456 43.9246 28.848V38.8734H36.7827V28.848C36.7827 23.8456 34.9687 21.3162 31.3559 21.3162C28.0591 21.3162 26.4229 23.4865 26.4229 27.749V45.7007H19.2358V27.2075C19.2358 22.945 20.4087 19.5879 22.761 17.1392C25.1826 14.6905 28.3101 13.4397 32.1505 13.4397C36.5698 13.4397 39.9265 14.9906 42.1764 18.0885L43.352 19.9895L44.5308 18.0885C46.7807 14.9906 50.1374 13.4397 54.5535 13.4397C58.3907 13.4397 61.5214 14.6905 63.9398 17.1392C66.292 19.5879 67.4681 22.945 67.4681 27.2075H61.4747Z"/></svg>
+                <span class="contact-name">Mastodon</span>
+                <span class="contact-handle">@dornad</span>
+            </a>
+            <a class="contact-link" href="https://github.com/dornad" target="_blank" rel="noopener">
+                <svg class="contact-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+                <span class="contact-name">GitHub</span>
+                <span class="contact-handle">dornad</span>
+            </a>
+            <a class="contact-link" href="https://dornad.itch.io/" target="_blank" rel="noopener">
+                <svg class="contact-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M3.13 1.338C2.08 1.96.5 3.547.5 4.521v1.07c0 1.395.564 2.397 1.554 2.818.105.045.214.082.326.112a2.476 2.476 0 0 0 2.036-.365c.56-.39.924-1.003.924-1.713 0 .71.365 1.324.925 1.713a2.476 2.476 0 0 0 2.036.365c.112-.03.22-.067.326-.112a2.476 2.476 0 0 0 2.036.365c.112-.03.22-.067.326-.112.99-.42 1.554-1.423 1.554-2.818V4.52c0-.974-1.58-2.56-2.63-3.183C8.77.48 6.394.005 5.998.005c-.397 0-2.77.475-3.868 1.333zM.5 8.95v10.6c0 1.86.963 3.45 3.5 3.45h16c2.537 0 3.5-1.59 3.5-3.45V8.95c-.574.457-1.27.726-2.014.726a3.15 3.15 0 0 1-2.236-.926 3.15 3.15 0 0 1-2.236.926 3.15 3.15 0 0 1-2.236-.926 3.15 3.15 0 0 1-2.236.926 3.15 3.15 0 0 1-2.236-.926 3.15 3.15 0 0 1-2.236.926 3.15 3.15 0 0 1-2.236-.926A3.15 3.15 0 0 1 2.514 9.676C1.77 9.676 1.074 9.407.5 8.95zm6.75 3.75h9.5v6h-9.5v-6z"/></svg>
+                <span class="contact-name">itch.io</span>
+                <span class="contact-handle">dornad</span>
+            </a>
+            <a class="contact-link" href="https://globalgamejam.org/users/dornad" target="_blank" rel="noopener">
+                <svg class="contact-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"/></svg>
+                <span class="contact-name">GGJ</span>
+                <span class="contact-handle">dornad</span>
+            </a>
+        </div>
+    </section>
+
+    <!-- ═══════ FOOTER ═══════ -->
+    <footer>
+        <div class="footer-left"><span style="font-family: var(--mono); font-size: 0.65rem; color: var(--text-dim);">// NYC &#127961; &middot; roots &#127464;&#127476;</span></div>
+        <div class="footer-right">&copy; 2026 Daniel Rodriguez &middot; Built with <a href="https://astro.build" target="_blank">Astro</a></div>
+    </footer>
+
+    <!-- ═══════ INTERACTIONS ═══════ -->
+    <script>
+        // Persona switcher (mockup only)
+        document.querySelectorAll('.nav-persona a').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                e.preventDefault();
+                document.querySelector('.nav-persona a.active').classList.remove('active');
+                btn.classList.add('active');
+            });
+        });
+
+        // Filter buttons (mockup only)
+        document.querySelectorAll('.filter-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                document.querySelector('.filter-btn.active').classList.remove('active');
+                btn.classList.add('active');
+            });
+        });
+
+        // Scroll-triggered fade-in for sections
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('section').forEach(section => {
+            section.style.opacity = '0';
+            section.style.transform = 'translateY(20px)';
+            section.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(section);
+        });
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,100 @@
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root,
+[data-theme="dark"] {
+    --bg-deep-rgb: 8, 9, 12;
+    --bg-deep: #08090c;
+    --bg: #0d0f14;
+    --bg-elevated: #13161e;
+    --bg-card: #171b24;
+    --border: #1e2330;
+    --border-hover: #2a3040;
+    --text: #e2e6ef;
+    --text-secondary: #8891a4;
+    --text-dim: #505a6e;
+    --accent: #4ecdc4;
+    --accent-glow: rgba(78, 205, 196, 0.15);
+    --accent-warm: #ff6b6b;
+    --accent-gold: #ffd93d;
+    --accent-blue: #6c9bff;
+    --display: "Anybody", system-ui, sans-serif;
+    --body: "DM Sans", system-ui, sans-serif;
+    --mono: "JetBrains Mono", monospace;
+}
+
+[data-theme="light"] {
+    --bg-deep-rgb: 248, 249, 251;
+    --bg-deep: #f8f9fb;
+    --bg: #f0f2f5;
+    --bg-elevated: #ffffff;
+    --bg-card: #ffffff;
+    --border: #e2e6ec;
+    --border-hover: #c8cfd8;
+    --text: #1a1d24;
+    --text-secondary: #5a6172;
+    --text-dim: #8891a4;
+    --accent: #0d9488;
+    --accent-glow: rgba(13, 148, 136, 0.1);
+    --accent-warm: #dc2626;
+    --accent-gold: #ca8a04;
+    --accent-blue: #2563eb;
+}
+
+html {
+    scroll-behavior: smooth;
+    scrollbar-color: var(--border) var(--bg-deep);
+}
+
+body {
+    font-family: var(--body);
+    background: var(--bg-deep);
+    color: var(--text);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    transition:
+        background-color 0.2s ease,
+        color 0.2s ease;
+}
+
+section {
+    max-width: 1120px;
+    margin: 0 auto;
+    padding: 6rem 2rem;
+}
+
+.section-header {
+    display: flex;
+    align-items: baseline;
+    gap: 1rem;
+    margin-bottom: 3rem;
+}
+
+.section-number {
+    font-family: var(--mono);
+    font-size: 0.7rem;
+    color: var(--accent);
+    letter-spacing: 0.1em;
+}
+
+.section-title {
+    font-family: var(--display);
+    font-size: 2rem;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+}
+
+.section-line {
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+}
+
+.feature-hidden {
+    display: none !important;
+}
