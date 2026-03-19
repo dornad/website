@@ -4,25 +4,26 @@
 
 This is the source code for [danielrodriguez.name](https://danielrodriguez.name), the personal website of Daniel Rodriguez — an iOS Software Engineer and hobbyist game developer based in NYC.
 
-The site is hosted on **GitHub Pages** with a custom domain, served over HTTPS via Let's Encrypt. No build step, no framework — just static files deployed from the `main` branch root.
+The site is built with **Astro** and deployed to **GitHub Pages** via GitHub Actions.
 
-## Current State (Early March 2026)
+## Current State (March 2026 — MVP Launch)
 
-The site is currently a **placeholder / under-construction page**. It's a single `index.html` file with:
+The site is live with 6 sections:
 
-- Name, title, and short tagline (iOS Engineer · Game Dev · NYC)
-- A "new site under construction" status badge
-- Three contact links: LinkedIn, Mastodon (@dornad@iosdev.space), GitHub (dornad)
-- Dark theme with a subtle dev/terminal aesthetic (grid background, blinking cursor prompt, monospace + serif font pairing)
-- Fully responsive, no external dependencies beyond Google Fonts (JetBrains Mono, Source Serif 4)
+1. **Hero** — Name, tagline, stats (years exp, GGJ streak, BAFTA)
+2. **About** — Bio + three track cards (iOS Engineering, Game Development, Creative & Experimental)
+3. **Projects** — Filterable project grid with 6 entries (Adapter, Warby Parker, GGJ, Homer, SongPop, CMU ETC)
+4. **Achievements** — Featured awards and milestones
+5. **Resume** — View inline or download PDF
+6. **Contact** — Links to LinkedIn, Mastodon, GitHub, itch.io, GGJ
+
+Persona switching (iOS/GameDev/Creative views) is hidden behind `.feature-hidden` — remove the class to enable.
 
 ### Hosting & Infrastructure
 
-- **Host:** GitHub Pages (deployed from `main` branch, root `/`)
-- **Domain:** `danielrodriguez.name` (registered through A Small Orange)
-- **DNS:** A records pointing to GitHub Pages IPs (185.199.108-111.153), www CNAME to `dornad.github.io`
+- **Host:** GitHub Pages (deployed from `main` branch)
+- **Domain:** `danielrodriguez.name`
 - **SSL:** Enforced via GitHub Pages (Let's Encrypt)
-- **Old host:** A Small Orange (shared hosting with cPanel) — DNS still managed there, but hosting is no longer used
 
 ## Legacy State
 
@@ -37,27 +38,10 @@ The old site was:
 - Static HTML/CSS/JS built on a Template World theme
 - XHTML 1.0 Strict doctype, fixed 747px width (not responsive)
 - jQuery 1.9.1 for header/footer injection
-- Legacy Google Analytics (ga.js)
-- Multi-page structure: `pages/index.html`, `pages/portfolio.html`, `pages/resume.html`, `pages/contact.html`, `pages/blog.html`
-- Root `index.html` was just a meta-refresh redirect to `pages/index.html`
-- Portfolio showcased work at: Paperless Post, Homer Learning, FreshPlanet (SongPop), AnyoneGame (JustSingIt), CMU projects, open source
-- Resume page embedded a PDF
+- Multi-page structure
 - Bio was outdated (no mention of iOS/SwiftUI, AI tooling, or recent work at Adapter)
 
-### Legacy Files of Note
-
-- `docs/` — Game design documents from CMU projects (PDFs)
-- `images/` — Portfolio screenshots and project images
-- `resumes/` — Resume PDF
-- `pages/portfolio_*.html` — Individual project detail pages
-
-Some of this content (particularly the portfolio pieces and game design docs) may be worth carrying forward into the new site.
-
-## What We Want to Build
-
-The placeholder is temporary. The goal is a full personal website redesign. Key context for the new site:
-
-### About Daniel
+## About Daniel
 
 - **Current role:** Recently laid off from Adapter (adapter.com), an AI assistant app, where he was the lead and only iOS developer
 - **Background:** Carnegie Mellon University (Master's, Entertainment Technology / Game Dev, NYC program)
@@ -65,58 +49,46 @@ The placeholder is temporary. The goal is a full personal website redesign. Key 
 - **Side interests:** Game development (Godot, game jams via Global Game Jam), AR programming, kitesurfing
 - **Location:** NYC
 - **Handles:** @dornad (GitHub, Mastodon), /in/danielrodc (LinkedIn), dornad.itch.io (itch.io), globalgamejam.org/users/dornad (GGJ)
-- **Handle origin:** "dornad" = "Dan Rod" reversed. Internet handle since ~1996 (Bogota, Colombia). First used as dornad@hotmail.com, pre-Microsoft acquisition.
-- **Domains:** danielrodriguez.name (primary), danielrodriguez.dev (→ /ios), danielrodriguez.games (→ /gamedev), dornad.studio (TBD). Also owns pekgames.studio and fediverse-play.dev (unused). All registered on Namecheap.
+- **Handle origin:** "dornad" = "Dan Rod" reversed. Internet handle since ~1996 (Bogota, Colombia).
+- **Domains:** danielrodriguez.name (primary), danielrodriguez.dev (→ /ios), danielrodriguez.games (→ /gamedev), dornad.studio (TBD)
 
-### Design Direction — FINALIZED
+## Design Direction
 
 **"Clean Portfolio with Game DNA"** — A creative, game-inspired personal site that serves a broad audience. Subtle game references in an otherwise clean, professional portfolio. Equal weight given to iOS engineering and game dev / creative projects.
 
 - **Framework:** Astro (static site generator, component-based, deployed on GitHub Pages)
 - **Persona system:** URL-based entry points (`/`, `/ios`, `/gamedev`, `/creative`) that reorder content emphasis from the same content pool
-- **Full design spec:** See `DESIGN_SPEC.md` for complete details
-
-### Content to Include
-
-- Updated bio reflecting iOS engineering focus and recent work
-- Portfolio / case studies (Adapter, Warby Parker, Homer, SongPop, game jam projects)
-- Links to GitHub, LinkedIn, Mastodon, itch.io, GGJ profile
-- Game dev / side projects section (Global Game Jam entries, itch.io)
-- Resume (both downloadable PDF and rendered on-page)
-- Achievements section (Featured by Apple, BAFTA, GGJ streak, etc.)
-- CMU projects: Game Design coursework and Building Virtual Worlds (have photos/videos for most)
-- Blog deferred to future iteration
-
-### Technical Preferences
-
-- Daniel is an iOS/Swift developer by trade; web dev is not his primary domain
-- The site should be simple to maintain — Astro with markdown content collections
-- Hosted on GitHub Pages, deployed via GitHub Actions
-- AI coding agents will likely be used to build and iterate on the site
+- **Full design spec:** See `docs/DESIGN_SPEC.md` for complete details
 
 ## File Structure
 
 ```
 .
-├── AGENTS.md          # This file — context for AI coding agents
-├── CLAUDE.md          # Claude Code config (imports AGENTS.md)
-├── DESIGN_SPEC.md     # Full design specification for the website redesign
-├── CNAME              # GitHub Pages custom domain config
-├── index.html         # Current placeholder page (will be replaced by Astro build)
-└── README.md          # Repo description
+├── src/
+│   ├── components/      # Astro components (Hero, About, Projects, etc.)
+│   ├── layouts/         # BaseLayout.astro
+│   ├── pages/           # Astro pages (index.astro)
+│   └── styles/          # Global CSS
+├── public/
+│   ├── images/          # Project thumbnails, icons
+│   └── resumes/         # Resume PDF
+├── .github/workflows/   # GitHub Actions
+├── docs/                # Design spec and mockup reference
+├── AGENTS.md            # This file
+└── package.json
 ```
 
 ## Useful Commands
 
 ```bash
-# View the old site
-git checkout v1-legacy
+npm install && npm run dev    # Start local dev server at localhost:4321
+npm run build                 # Build for production
+npm run preview               # Preview production build
+```
 
-# Return to current
-git checkout main
+## Running Locally
 
-# Test locally
-open index.html
-# or
-python3 -m http.server 8000
+```bash
+npm install
+npm run dev
 ```
