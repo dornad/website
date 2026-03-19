@@ -101,8 +101,8 @@
     position: absolute;
     inset: 0;
     background:
-      radial-gradient(ellipse 80% 60% at 70% 40%, rgba(78, 205, 196, 0.06) 0%, transparent 60%),
-      radial-gradient(ellipse 60% 50% at 20% 60%, rgba(108, 155, 255, 0.04) 0%, transparent 50%);
+      radial-gradient(ellipse 80% 60% at 70% 40%, var(--hero-glow-accent) 0%, transparent 60%),
+      radial-gradient(ellipse 60% 50% at 20% 60%, var(--hero-glow-blue) 0%, transparent 50%);
     pointer-events: none;
   }
 
@@ -208,7 +208,7 @@
     pointer-events: none;
     transition: opacity 0.4s ease-out;
     z-index: 10;
-    box-shadow: 0 8px 24px rgba(0,0,0,0.4);
+    box-shadow: var(--shadow-lg);
     display: flex;
     flex-direction: column;
     gap: 0.75rem;
