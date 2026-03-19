@@ -94,3 +94,7 @@ section {
     height: 1px;
     background: var(--border);
 }
+
+.feature-hidden {
+    display: none !important;
+}
