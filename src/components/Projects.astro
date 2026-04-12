@@ -34,6 +34,7 @@
                     <span class="project-tag">SwiftUI</span>
                     <span class="project-tag">TCA</span>
                 </div>
+                <a href="https://apps.apple.com/us/app/kitecalc/id6760378008" target="_blank" rel="noopener" class="project-visit">View on App Store →</a>
             </div>
         </article>
 
@@ -51,6 +52,7 @@
                     <span class="project-tag">SvelteKit</span>
                     <span class="project-tag">TypeScript</span>
                 </div>
+                <a href="https://repe.app" target="_blank" rel="noopener" class="project-visit">Visit →</a>
             </div>
         </article>
 
@@ -378,6 +380,21 @@
         flex-wrap: wrap;
         gap: 0.35rem;
         margin-top: 0.85rem;
+    }
+
+    .project-visit {
+        display: inline-block;
+        font-family: var(--mono);
+        font-size: 0.65rem;
+        color: var(--accent);
+        text-decoration: none;
+        margin-top: 0.85rem;
+        letter-spacing: 0.03em;
+        transition: color 0.15s;
+    }
+
+    .project-visit:hover {
+        text-decoration: underline;
     }
 
     .project-tag {
