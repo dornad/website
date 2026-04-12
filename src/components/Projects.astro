@@ -19,6 +19,27 @@
         <article class="project-card featured" data-category="ios">
             <div class="project-thumb thumb-light">
                 <img
+                    src="/images/projects/kitecalc.svg"
+                    alt="KiteCalc iOS app icon"
+                />
+            </div>
+            <div class="project-body">
+                <div class="project-category">iOS &mdash; Indie</div>
+                <div class="project-title">KiteCalc</div>
+                <div class="project-desc">
+                    A kiteboarding gear calculator for iOS. Enter your weight and wind conditions, get recommendations for kite size, board dimensions, and rideable wind ranges. Built with SwiftUI and TCA, powered by an open-source calculation engine. Privacy-first analytics via TelemetryDeck.
+                </div>
+                <div class="project-tags">
+                    <span class="project-tag">Swift</span>
+                    <span class="project-tag">SwiftUI</span>
+                    <span class="project-tag">TCA</span>
+                </div>
+            </div>
+        </article>
+
+        <article class="project-card" data-category="ios">
+            <div class="project-thumb thumb-light">
+                <img
                     src="/images/projects/adapter.svg"
                     alt="Adapter project thumbnail"
                 />
@@ -125,6 +146,21 @@
             </div>
         </article>
 
+        <article class="project-card" data-category="gamedev creative">
+            <div class="project-thumb">🎴</div>
+            <div class="project-body">
+                <div class="project-category">Game Dev &mdash; Indie</div>
+                <div class="project-title">repe.app</div>
+                <div class="project-desc">
+                    Collectible sticker album game engine for the web. Open packs, collect stickers, trade duplicates. Currently powering an ASOIAF fan project.
+                </div>
+                <div class="project-tags">
+                    <span class="project-tag">SvelteKit</span>
+                    <span class="project-tag">TypeScript</span>
+                </div>
+            </div>
+        </article>
+
         <article class="project-card" data-category="creative">
             <div class="project-thumb">&#127891;</div>
             <div class="project-body">
@@ -156,7 +192,7 @@
 
             projectCards.forEach((card) => {
                 const category = card.getAttribute("data-category");
-                if (filter === "all" || category === filter) {
+                if (filter === "all" || category.includes(filter)) {
                     card.style.display = "";
                 } else {
                     card.style.display = "none";
