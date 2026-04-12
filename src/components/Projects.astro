@@ -17,7 +17,7 @@
 
     <div class="projects-grid">
         <article class="project-card featured" data-category="ios">
-            <div class="project-thumb thumb-light">
+            <div class="project-thumb thumb-kitecalc">
                 <img
                     src="/images/projects/kitecalc.png"
                     alt="KiteCalc iOS app icon"
@@ -284,6 +284,15 @@
 
     .project-thumb.thumb-light img {
         max-height: 80px;
+        object-fit: contain;
+    }
+
+    .project-thumb.thumb-kitecalc {
+        background: linear-gradient(to bottom, #e8f0fe, #a8d4f0);
+    }
+
+    .project-thumb.thumb-kitecalc img {
+        max-height: 120px;
         object-fit: contain;
     }
 
