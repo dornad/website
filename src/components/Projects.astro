@@ -17,6 +17,44 @@
 
     <div class="projects-grid">
         <article class="project-card featured" data-category="ios">
+            <div class="project-thumb thumb-kitecalc">
+                <img
+                    src="/images/projects/kitecalc.png"
+                    alt="KiteCalc iOS app icon"
+                />
+            </div>
+            <div class="project-body">
+                <div class="project-category">iOS &mdash; Indie</div>
+                <div class="project-title">KiteCalc</div>
+                <div class="project-desc">
+                    A kiteboarding gear calculator for iOS. Enter your weight and wind conditions, get recommendations for kite size, board dimensions, and rideable wind ranges. Built with SwiftUI and TCA, powered by an open-source calculation engine. Privacy-first analytics via TelemetryDeck.
+                </div>
+                <div class="project-tags">
+                    <span class="project-tag">Swift</span>
+                    <span class="project-tag">SwiftUI</span>
+                    <span class="project-tag">TCA</span>
+                </div>
+            </div>
+        </article>
+
+        <article class="project-card" data-category="gamedev creative">
+            <div class="project-thumb">
+                <img src="/images/projects/repe.png" alt="repe.app screenshot" />
+            </div>
+            <div class="project-body">
+                <div class="project-category">Game Dev &mdash; Indie</div>
+                <div class="project-title">repe.app</div>
+                <div class="project-desc">
+                    Collectible sticker album game engine for the web. Open packs, collect stickers, trade duplicates. Currently powering an ASOIAF fan project.
+                </div>
+                <div class="project-tags">
+                    <span class="project-tag">SvelteKit</span>
+                    <span class="project-tag">TypeScript</span>
+                </div>
+            </div>
+        </article>
+
+        <article class="project-card" data-category="ios">
             <div class="project-thumb thumb-light">
                 <img
                     src="/images/projects/adapter.svg"
@@ -40,6 +78,28 @@
             </div>
         </article>
 
+        <article class="project-card" data-category="gamedev">
+            <div class="project-thumb thumb-ggj">
+                <img src="/images/projects/ggj.png" alt="Global Game Jam logo" />
+            </div>
+            <div class="project-body">
+                <div class="project-category">
+                    Game Dev &mdash; Global Game Jam
+                </div>
+                <div class="project-title">Game Jam Collection</div>
+                <div class="project-desc">
+                    Unbroken streak since 2019. Small teams, 48-hour builds,
+                    Godot engine.
+                </div>
+                <div class="project-tags">
+                    <span class="project-tag">Godot</span>
+                    <span class="project-tag">GDScript</span>
+                    <span class="project-tag">Unity</span>
+                    <span class="project-tag">C#</span>
+                </div>
+            </div>
+        </article>
+
         <article class="project-card" data-category="ios">
             <div class="project-thumb">
                 <img
@@ -58,26 +118,6 @@
                     <span class="project-tag">ARKit</span>
                     <span class="project-tag">RealityKit</span>
                     <span class="project-tag">SceneKit</span>
-                </div>
-            </div>
-        </article>
-
-        <article class="project-card" data-category="gamedev">
-            <div class="project-thumb">&#127918;</div>
-            <div class="project-body">
-                <div class="project-category">
-                    Game Dev &mdash; Global Game Jam
-                </div>
-                <div class="project-title">Game Jam Collection</div>
-                <div class="project-desc">
-                    Unbroken streak since 2019. Small teams, 48-hour builds,
-                    Godot engine.
-                </div>
-                <div class="project-tags">
-                    <span class="project-tag">Godot</span>
-                    <span class="project-tag">GDScript</span>
-                    <span class="project-tag">Unity</span>
-                    <span class="project-tag">C#</span>
                 </div>
             </div>
         </article>
@@ -126,7 +166,9 @@
         </article>
 
         <article class="project-card" data-category="creative">
-            <div class="project-thumb">&#127891;</div>
+            <div class="project-thumb thumb-bvw">
+                <img src="/images/projects/bvw.png" alt="The BVW Show illustration" />
+            </div>
             <div class="project-body">
                 <div class="project-category">Creative &mdash; CMU ETC</div>
                 <div class="project-title">Building Virtual Worlds</div>
@@ -156,7 +198,7 @@
 
             projectCards.forEach((card) => {
                 const category = card.getAttribute("data-category");
-                if (filter === "all" || category === filter) {
+                if (filter === "all" || category.includes(filter)) {
                     card.style.display = "";
                 } else {
                     card.style.display = "none";
@@ -210,7 +252,7 @@
         border-radius: 8px;
         overflow: hidden;
         transition: all 0.25s;
-        cursor: pointer;
+        cursor: default;
         position: relative;
     }
 
@@ -248,6 +290,32 @@
 
     .project-thumb.thumb-light img {
         max-height: 80px;
+        object-fit: contain;
+    }
+
+    .project-thumb.thumb-kitecalc {
+        background: linear-gradient(to bottom, #e8f0fe, #a8d4f0);
+    }
+
+    .project-thumb.thumb-kitecalc img {
+        max-height: 120px;
+        object-fit: contain;
+    }
+
+    .project-thumb.thumb-ggj {
+        background: #0a0a0a;
+    }
+
+    .project-thumb.thumb-ggj img {
+        object-fit: contain;
+        padding: 12px;
+    }
+
+    .project-thumb.thumb-bvw {
+        background: #d4c4a8;
+    }
+
+    .project-thumb.thumb-bvw img {
         object-fit: contain;
     }
 
